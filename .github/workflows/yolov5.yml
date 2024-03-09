@@ -1,0 +1,27 @@
+name: YOLOv5 Inference
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  yolov5_inference:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x' # 3.x にはお好みのPythonバージョンを指定してください
+
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+
+    - name: Run YOLOv5 inference
+      run: |
+        python path/to/yolov5/inference/script.py
